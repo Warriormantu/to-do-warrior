@@ -1,0 +1,249 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ================= BODY ================= */
+body {
+  font-family: "Segoe UI", sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  background-size: 400% 400%;
+  animation: bgMove 10s ease infinite;
+  color: #333;
+}
+
+@keyframes bgMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ================= HEADER ================= */
+header {
+  background: rgba(255, 79, 139, 0.95);
+  padding: 15px 30px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+header h1 {
+  font-size: 24px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  position: relative;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: 0.3s;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ================= MAIN ================= */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 30px 15px;
+}
+
+/* ================= CARD ================= */
+.todo-app,
+.about,
+.contact {
+  background: white;
+  width: 100%;
+  max-width: 420px;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  animation: fadeUp 0.6s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  text-align: center;
+  color: #ff4f8b;
+  margin-bottom: 20px;
+}
+
+/* ================= INPUTS ================= */
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #ffd1dc;
+  outline: none;
+  margin-bottom: 12px;
+  transition: 0.3s;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #ff4f8b;
+  box-shadow: 0 0 10px rgba(255,79,139,0.4);
+}
+
+/* ================= BUTTONS ================= */
+button {
+  background: linear-gradient(135deg, #ff4f8b, #ff85a2);
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(255,79,139,0.5);
+}
+
+#add-task-btn {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+/* ================= TODO LIST (FINAL) ================= */
+#task-list {
+  list-style: none;
+  counter-reset: task;
+  margin-top: 20px;
+  padding-left: 0;
+}
+
+#task-list li {
+  counter-increment: task;
+  display: flex;
+  align-items: center;
+  background: #ffe6ee;
+  padding: 14px 16px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+}
+
+/* Number badge */
+#task-list li::before {
+  content: counter(task);
+  min-width: 26px;
+  height: 26px;
+  background: #ff4f8b;
+  color: white;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+/* Checkbox */
+#task-list li input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #ff4f8b;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+/* Task text */
+#task-list li span {
+  flex: 1;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+/* Completed */
+.completed span {
+  text-decoration: line-through;
+  color: #999;
+  opacity: 0.7;
+}
+
+/* Delete button */
+#task-list li button {
+  background: #ff4f8b;
+  color: #fff;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+#task-list li button:hover {
+  background: #ff2f75;
+}
+
+/* ================= FOOTER ================= */
+footer {
+  text-align: center;
+  padding: 15px;
+  color: white;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  main {
+    padding: 20px 10px;
+  }
+}
